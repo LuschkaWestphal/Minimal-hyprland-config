@@ -1,0 +1,113 @@
+{
+      "layer": "top",
+      "position": "top",
+      "height": 20,
+      "margin-top": 10,
+      "margin-right": 10,
+      "margin-left": 10,
+
+      "modules-left": ["custom/start", "hyprland/workspaces", "custom/media"],
+      "modules-center": ["clock", "custom/weather"],
+      "modules-right": [
+            "tray",
+            "network",
+            "wireplumber",
+            "cpu",
+            "custom/power",
+      ],
+
+      "custom/start": {
+            "format": " ",
+            "on-click": "wofi --show drun",
+      },
+
+      "hyprland/workspaces": {
+            "format": "{name}",
+            "persistent-workspaces": {
+                  "*": 4,
+            },
+      },
+
+      "clock": {
+            "format-alt": "{:%a, %d. %b  %H:%M}",
+            "tooltip-format": "<tt><span size='8.5pt'>{calendar}</span></tt>",
+            "calendar": {
+                  "mode": "month",
+                  "mode-mon-col": 3,
+                  "on-scroll": 1,
+                  "format": {
+                        "months": "<span color='#ffead3'><b>{}</b></span>",
+                        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                        "today": "<span color='#ff6699'><b><u>{}</u></b></span>",
+                  },
+                  "actions": {
+                        "on-click-right": "mode",
+                        "on-scroll-up": "shift_up",
+                        "on-scroll-down": "shift_down",
+                  },
+            },
+      },
+
+      "custom/weather": {
+            "format": "{}°",
+            "tooltip": true,
+            "interval": 3600,
+            "exec": "wttrbar --date-format %Y-%m-%d --location Debrecen",
+            "return-type": "json",
+      },
+
+      "tray": {
+            "spacing": 10,
+      },
+
+      "network": {
+            "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+            "format": "{icon} {essid}",
+            "format-wifi": "{icon} {essid}",
+            "format-ethernet": "󰀂",
+            "format-disconnected": "󰤮",
+            "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+            "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+            "tooltip-format-disconnected": "Disconnected",
+            "interval": 3,
+            "spacing": 1,
+            "on-click": "kitty --class=float-tui -e gazelle",
+      },
+
+      "wireplumber": {
+            "format": "{icon} {volume}%",
+            "format-muted": "",
+            "format-icons": ["", "", ""],
+            "on-click": "kitty --class=float-tui -e wiremix",
+            "max-volume": 150,
+            "scroll-step": 1,
+      },
+
+      "cpu": {
+            "format": " {usage}%",
+            "interval": 5,
+            "on-click": "kitty --class=float-btop -e btop",
+      },
+
+      "custom/power": {
+            "format": "⏻",
+            "tooltip": true,
+            "tooltip-format": "Power Off",
+            "on-click": "wlogout",
+      },
+
+      "custom/media": {
+            "format": "󰄾 {1} {0} 󰄽",
+            "escape": true,
+            "return-type": "json",
+            "max-length": 40,
+            "on-click": "playerctl play-pause",
+            "on-click-right": "playerctl stop",
+            "smooth-scrolling-threshold": 10,
+            "on-scroll-up": "playerctl next",
+            "on-scroll-down": "playerctl previous",
+            "exec": "python $HOME/.config/waybar/mediaplayer.py 2> /dev/null",
+      },
+}

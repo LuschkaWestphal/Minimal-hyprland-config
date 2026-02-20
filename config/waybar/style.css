@@ -1,0 +1,74 @@
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 10px;
+}
+
+window#waybar {
+    background-color: transparent;
+    border: none;
+}
+
+.modules-left {
+  background-color: rgba(0, 0, 0, 0.15); 
+  border-radius: 8px;
+  padding: 0px 5px;
+  margin: 0px 5px;
+  border: 0.5px solid #ffffff;
+}
+
+.modules-center {
+  background-color: rgba(0, 0, 0, 0.15);  
+  border-radius: 8px;
+  padding: 0px 5px;
+  margin: 0px 5px;
+  border: 0.5px solid #ffffff;
+}
+
+.modules-right {
+  background-color: rgba(0, 0, 0, 0.15); 
+  border-radius: 8px;
+  border: 0.5px solid #ffffff;
+  padding: 4px 8px;
+  margin: 0px 5px; 
+}
+
+#workspaces button {
+    all: initial;
+    padding: 4px 6px;
+    margin: 2px 1.5px;
+    min-width: 9px;
+}
+
+#workspaces button.empty {
+    opacity: 1;
+}
+
+#workspaces button.active {
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 8px;
+}
+
+#custom-start,
+#workspaces, 
+#custom-media,
+#clock,
+#custom-weather {
+  padding: 0 2px;
+  margin: 0px 2px;
+}
+
+#tray, #network, #cpu, #wireplumber, #custom-power {
+  padding: 0 4px;
+  margin: 0px 2px;
+}
+
+#custom-start {
+  background-image: url("/home/mate/.config/waybar/CachyOS.png");
+  background-size: 15px 15px;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding-left: 10px;
+  margin-left: 5px;
+}
+
